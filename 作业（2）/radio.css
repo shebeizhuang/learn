@@ -1,0 +1,33 @@
+/* 可视窗口 */
+.container {
+    position:relative;/*不脱离文档流，可用margin*/
+    overflow:hidden;/*解决内容溢出问题*/
+    width:1500px;/*设置可视窗口的宽度，不继承body*/   
+    /*元素绝对定位脱离文档流，此父级需要解决高度塌陷问题*/
+    height:730px;/*解决高度塌陷问题*/
+    margin:0 auto;
+}
+/* 图片容器 */
+.img-list {
+    position:absolute;/*绝对定位脱离文档流*/
+    /* 子元素浮动脱离文档流，此父级没有设置浮动，高度塌陷 */
+    width:9000px;
+    overflow:hidden;/* 解决高度塌陷 */
+    animation:move 40s ease-in-out infinite;
+    animation-delay:.1s;
+    /* animation-direction:alternate; */
+}
+.img-list img {
+    float:left;/* 为了实现在一行且浮动之后行内块img元素之间间距消失 */
+    width:1500px;
+    height:730px;
+    z-index:0;
+}
+@keyframes move {
+    0%,14%{left:0;}
+    17%,31%{left:-1500px;}
+    34%,48%{left:-3000px;}
+    51%,65%{left:-4500px;}
+    68%,82%{left:-6000px;}
+    85%,100%{left:-7500px;}
+}
